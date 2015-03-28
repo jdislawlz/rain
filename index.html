@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>When Will the Rain Stop?</title>
+		<link rel='stylesheet' type='text/css' href='css/reset.css'>
+		<link rel='stylesheet' type='text/css' href='css/wwtrs_style_video.css'>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:200,400' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAqclwp1ojknWJxOXPg3M6VNwR1Vd64Ko"></script>
+		<script type="text/javascript" src="js/ajaxcall.js"></script>
+	</head>
+	<body>
+		<div class="totalwrapper">
+			<main class="main">
+				<form action="<?php echo $_SERVER['PHP_SELF']; ?>">
+					<input id="address" type="textbox" name="address" value="Orlando, Florida"><br>
+					<a href=# id="submit"><h1>When Will The <span>Rain</span> Stop?</h1></a>
+				</form>
+				<div id="results">
+					<p id="resultsinner"></p>
+					<img src='img/loadingcloud5.png' height='100px' width='100px' class="loading" />
+				</div>
+			</main>
+			<video autoplay loop id="bgvid">
+				<source src="vid/windowrain.webm" type="video/webm">
+				<source src="vid/windowrain.mp4" type="video/mp4">
+			</video>
+		</div>
+	</body>
+</html>
