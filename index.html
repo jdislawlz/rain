@@ -6,28 +6,33 @@
 		<title>When Will the Rain Stop?</title>
 		<link rel='stylesheet' type='text/css' href='css/reset.css'>
 		<link rel='stylesheet' type='text/css' href='css/wwtrs_style_video.css'>
-		<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:200,400' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAqclwp1ojknWJxOXPg3M6VNwR1Vd64Ko"></script>
 		<script type="text/javascript" src="js/ajaxcall.js"></script>
 	</head>
 	<body>
-		<div class="totalwrapper">
-			<main class="main">
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>">
-					<input id="address" type="textbox" name="address" value="Orlando, Florida"><br>
-					<a href=# id="submit"><h1>When Will The <span>Rain</span> Stop?</h1></a>
-				</form>
-				<div id="results">
-					<p id="resultsinner"></p>
-					<img src='img/loadingcloud5.png' height='100px' width='100px' class="loading" />
-				</div>
-			</main>
-			<video autoplay loop id="bgvid">
-				<source src="vid/windowrain.webm" type="video/webm">
-				<source src="vid/windowrain.mp4" type="video/mp4">
-			</video>
-		</div>
+		<header>
+			<h1>When Will the Rain Stop?</h1>
+		</header>
+		<main class="valign">
+			<p class="instruct">Enter in your location below or enable geo-location to find out when the rain will stop.</p>
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" >
+				<input id="address" type="textbox" name="address" value="Orlando, Florida">
+				<a id="submit" class="button"><i class="fa fa-check"></i></a>
+			</form>
+			<div id="results" class="results">
+				<p id="resultsinner"></p>
+				<img src='img/loadingcloud5.png' height='100px' width='100px' class="loading" />
+			</div>
+		</main>
+		<footer>
+			<a href="http://www.joshdelgado.me"><img src="img/logo-rain.png" /></a>
+		</footer>
+		<video autoplay loop id="bgvid">
+			<source src="vid/windowrain.webm" type="video/webm">
+			<source src="vid/windowrain.mp4" type="video/mp4">
+		</video>
 	</body>
 </html>

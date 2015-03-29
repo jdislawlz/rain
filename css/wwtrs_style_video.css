@@ -1,51 +1,27 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Josefin+Sans:300,400|Josefin+Slab);
+
 *{
 	box-sizing: border-box;
 }
 html{
 	height:100%;
 	position:relative;
+	font-size: 16px;
 }
 
 body{
 	height:100%;
-	font-family:'Open Sans', sans-serif;
+	font-family:'Source Sans Pro', sans-serif;
 	color:#fff;
 	position:relative;
 	background-color:#615F63;
 }
 
-h1{
-	font-family:'Josefin Slab', serif;
-	font-size:6rem;
-	font-weight: 200;
-	margin:45px 0;
-	letter-spacing:-5px;
-	color:#fff;
-	-webkit-transition: all .5s ease;
-	-moz-transition: all .5s ease;
-	-ms-transition: all .5s ease;
-	-o-transition: all .5s ease;
-	transition: all .5s ease;
+h2,h3,h4,h5,h6,p,a,input{
+	font-family: inherit;
 }
 
-h1:hover{
-	letter-spacing:-2px;
-}
-
-span{
-	color:#47B2DA;
-	font-weight:400;
-}
-
-.totalwrapper{
-	width:80%;
-	margin:0 auto;
-	display:block;
-	text-align:center;
-	height:100%;
-}
-
-.main{
+.valign{
 	position:relative;
 	top:50%;
 	-ms-transform: translateY(-50%);
@@ -55,16 +31,25 @@ span{
 	transform: translateY(-50%);
 }
 
-input{
-	width:350px;
-	height:60px;
-	border:3px solid #fff;
+.text-center{
+	text-align: center;
+}
+
+/**************************** Header ****************************/
+
+header{
+	padding:1em 0.25em;
+	text-align: center;
+	background-color: rgba(71, 127, 210, 1);
+	position: absolute;
+	top:0; left:0; right:0;
+}
+
+header h1{
+	font-family:'Josefin Sans', serif;
+	font-size:2.25em;
+	font-weight: 400;
 	color:#fff;
-	font-size:2rem;
-	text-align:center;
-	font-family:'Open Sans', sans-serif;
-	border-radius: 3px;
-	background-color: rgba(255,255,255,0);
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
 	-ms-transition: all .5s ease;
@@ -72,66 +57,126 @@ input{
 	transition: all .5s ease;
 }
 
-input:hover{
-	border:3px solid #000;
-	background-color: rgba(255,255,255,0.75);
-	color:#000;
+/**************************** Main ****************************/
+
+main{
+	width:90%;
+	margin: 0 auto;
+	padding: 1em 0;
+	display: block;
+}
+
+p{
+	line-height:1.5em;
+	font-weight: 400;
+	margin:0;
+	text-align: center;
+}
+
+p.instruct{
+	margin:4.854em 0.5em 1em;
+	margin:1em 0.5em 1em;
+}
+
+form{
+	width:100%;
+	max-width:400px;
+	position: relative;
+	margin:0 auto;
+}
+
+input{
+	width:100%;
+	padding:7px 10px;
+	border:3px solid #fff;
+	color:#fff;
+	background-color:#615F63;
+	font-size:1.618em;
+	font-family:inherit;
+	border-radius: 2px;
+	background-color: rgba(255,255,255,0);
+	-webkit-transition: all .35s ease;
+	-moz-transition: all .35s ease;
+	-ms-transition: all .35s ease;
+	-o-transition: all .35s ease;
+	transition: all .35s ease;
 }
 
 input:focus{
-	border:0px solid #B8E2F1;
-	color:#fff;
-	background-color: #47B2DA;
+	background-color: rgba(0,0,0,0.25);
+	outline:0;
 }
 
-a{
+.button{
 	color:#000;
+	background-color: #fff;
+	font-size: 1.314em;
+	border-radius: 2px;
 	text-decoration:none;
+	padding:0.25em 0.66em;
+	position:absolute;
+	top:0; right:0;
+	height:100%;
+	width:58px;
+	cursor: pointer;
+	z-index:99;
+	-webkit-transition: all .35s ease;
+		-moz-transition: all .35s ease;
+		-ms-transition: all .35s ease;
+		-o-transition: all .35s ease;
+		transition: all .35s ease;
 }
 
-#results{
-	height:60px;
+.button i{
+	font-size: 1.314em;
+	color:#477fd2;
+	text-align: center;
+	margin:7px 0;
+	-webkit-transition: all .35s ease;
+		-moz-transition: all .35s ease;
+		-ms-transition: all .35s ease;
+		-o-transition: all .35s ease;
+		transition: all .35s ease;
+}
+
+.button:hover i{
+	color:#000;
+	transform:translateY(1px);
+}
+
+.results{
 	font-size:2rem;
-	transform:translateY(-10px);
+	min-height:105px;
+	text-align: center;
+	margin-top:3em;
+}
+
+/**************************** Footer ****************************/
+
+footer{
+	height:5%;
+	padding:5px;
+	background-color: #fff;
+	color:#000;
+	position:absolute;
+	bottom:0; left:0; right:0;
+}
+
+footer img{
+	height:100%;
+	width:auto;
 }
 
 video#bgvid {
-	position: fixed; right: 0; bottom: 0;
-	min-width: 100%; min-height: 100%; z-index: -100;
+	display:none;
 }
 
-.loading{
-	transform:translateY(-10px);
-}
+@media (min-width:768px){
 
-@media (max-width: 600px){
-	h1{
-		font-size: 5rem;
-	}
-	input{
-		width:100%;
-	}
 	video#bgvid {
-		display:none;
+		display: block;
+		position: fixed; right: 0; bottom: 0;
+		min-width: 100%; min-height: 100%; z-index: -100;
 	}
-}
 
-@media (max-width:400px){
-	.totalwrapper{
-		width:90%;
-	}
-	#results{
-		transform:translateY(0);
-		font-size: 1.5rem;
-		line-height: 2rem;
-	}
-	h1{
-		font-size: 4rem;
-		margin:80px 0;
-	}
-}
-@media (max-width:350px){
-	input{
-		font-size: 1.5rem;
-	}
 }
