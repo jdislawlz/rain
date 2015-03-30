@@ -4,22 +4,11 @@ $(document).ready(function(){
 	function successFunction(position) {
 		var geolat = position.coords.latitude;
 		var geolong = position.coords.longitude;
-		//Your latitude is :'+geolat+' and longitude is '+geolong);
+		console.log('Your latitude is :'+geolat+' and longitude is '+geolong);
 		var url = "php/raininfo.php?latitude=";
 		url = url+geolat;
 		url = url+"&longitude="+geolong;
-		//alert(url);
-		//alert(location+": Location confirmed. Sending supplies.");
-		$("#resultsinner").fadeOut(500, function(){
-			$(".loading").attr("src","img/loadingcloud4.gif");
-			$(".loading").fadeIn(500, function(){
-				$.ajax({url:url,success:function(result){
-					$(".loading").delay(1000).fadeOut(500, function(){
-						$("#resultsinner").html(result).fadeIn(500);
-					});
-				}});
-			});
-		});
+		console.log(url);
 	}
 	function initialize() {
 		geocoder = new google.maps.Geocoder();
@@ -31,7 +20,7 @@ $(document).ready(function(){
 	}
 	function runit(evt){
 		evt.preventDefault();
-		var location = $("#address").val();
+		var user_location = $("#address").val();
 		var address = document.getElementById("address").value;
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
@@ -41,17 +30,22 @@ $(document).ready(function(){
 				var url = "php/raininfo.php?latitude=";
 				url = url+thelat;
 				url = url+"&longitude="+thelong;
-				url = url+"&address="+location;
-				//alert(url);
-				//alert(location+": Location confirmed. Sending supplies.");
-				$("#resultsinner").fadeOut(500, function(){
-					$(".loading").attr("src", "img/loadingcloud4.gif");
-					$(".loading").fadeIn(500, function(){
-						$.ajax({url:url,success:function(result){
-							$(".loading").delay(1000).fadeOut(500, function(){
-								$("#resultsinner").html(result).fadeIn(500);
+				url = url+"&address="+user_location;
+				$('.user_input').fadeOut(350, function(){
+					$('main.valign').css("top", "50%");
+					$('.results').fadeIn(350, function(){
+						$("#resultsinner").fadeOut(1, function(){
+							$(".loading").fadeIn(1, function(){
+								$.ajax({url:url,success:function(result){
+									$(".loading").delay(1000).fadeOut(350, function(){
+										$('main.valign').css("top", "47.5%");
+										$("#resultsinner").html(result).fadeIn(350, function(){
+											$(".again").fadeIn(500);
+										});
+									});
+								}});
 							});
-						}});
+						});
 					});
 				});
 			} else {
@@ -68,5 +62,14 @@ $(document).ready(function(){
 			e.preventDefault();
 			runit(e);
 		}
+	});
+	$('.again').on('click', function(e){
+		e.preventDefault();
+		$('.results').fadeOut(350, function(){
+			$('.user_input').fadeIn(350, function(){
+				$('#resultsinner').empty();
+				$(".again").fadeOut(350);
+			});
+		});
 	});
 });

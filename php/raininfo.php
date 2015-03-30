@@ -5,6 +5,8 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 	$key = "713a2259fbd56cbc71cbcc0037eae14b";
 	$lat = $_GET["latitude"];
 	$long = $_GET["longitude"];
+	//$lat = "28.5421";
+	//$long = "-81.155943";
 	$location = $_GET["address"];
 	$url.=$key."/".$lat.",".$long;
 
@@ -39,10 +41,10 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		//Find where the rain will stop and exit loop
 		if($mintensity <= .002 && $mprobability <= 15){
 			break;
-		}
+		}/*
 		else if($x==sizeOf($obj[minutely][data])-1){
 			$runhour = true;
-		}
+		}*/
 	}
 
 	/*if($runhour==true){
@@ -60,7 +62,7 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 				break;
 			}
 		}
-	}
+	}*/
 
 	if($runhour==false){
 		$changetime = $obj[minutely][data][$break][time];
@@ -70,7 +72,7 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 	else{
 		$changetime = $obj[hourly][data][$break][time];
 		$tilchange = "about ".round((round(($changetime-time())/60)/60), 1)." hours";
-	}*/
+	}
 	$stoptime = date('h:i a', $changetime);
 	$stopdate = date('m/d/Y', $changetime);
 
@@ -138,10 +140,17 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		echo("</tr></table>");
 	}*/
 
-	//var_dump($hourtime);
+	/*
+	echo "<pre>";
+		var_dump($mintime);
+	echo "</pre>";
 	//var_dump($hourprob);
 	//var_dump($hourintense);
 
-	//var_dump($obj[hourly]);
-	//var_dump($obj[minutely]);
+	echo "<pre>";
+	var_dump($obj[hourly]);
+	echo "</pre>";
+	echo "<pre>";
+	var_dump($obj[minutely]);
+	echo "</pre>";*/
 ?>
