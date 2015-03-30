@@ -68,6 +68,7 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		$changetime = $obj[minutely][data][$break][time];
 		$tilchange = round(($changetime-time())/60)." minutes";
 		if($tilchange<=0){ $tilchange = "0 minutes";}
+		else if($tilchange>=60){ $tilchange = "over an hour";}
 	}
 	else{
 		$changetime = $obj[hourly][data][$break][time];
@@ -99,7 +100,9 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		}
 	} else {
 		if($runhour==false){
-			$yesno = "The rain will stop in <span>$tilchange</span> around <span>$stoptime</span>";
+			if ($tilchange!="over an hour"){
+				$yesno = "The rain will stop in <span>$tilchange</span> around <span>$stoptime</span>";
+			} else {$yesno = "The rain will stop in <span>$tilchange</span>"; }
 		}
 		else{
 			$yesno = "The rain will end in over an hour.";
