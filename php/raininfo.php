@@ -5,8 +5,8 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 	$key = "713a2259fbd56cbc71cbcc0037eae14b";
 	$lat = $_GET["latitude"];
 	$long = $_GET["longitude"];
-	//$lat = "28.5421";
-	//$long = "-81.155943";
+	//$lat = "44.5191667";
+	//$long = "-88.0197222";
 	$location = $_GET["address"];
 	$url.=$key."/".$lat.",".$long;
 
@@ -28,6 +28,8 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 	$hourprob = array();
 	$hourtime = array();
 
+	$limit = .002;
+
 	for($x=0; $x<sizeOf($obj[minutely][data]); $x++){
 		$mintensity = round($obj[minutely][data][$x][precipIntensity], 3);
 		$mprobability = $obj[minutely][data][$x][precipProbability]*100;
@@ -39,7 +41,8 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		array_push($minprob, $mprobability);
 
 		//Find where the rain will stop and exit loop
-		if($mintensity <= .002 && $mprobability <= 15){
+		//if($mintensity <= .002 && $mprobability <= 25){
+		if($mintensity <= $limit){
 			break;
 		}/*
 		else if($x==sizeOf($obj[minutely][data])-1){
@@ -67,13 +70,14 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 	if($runhour==false){
 		$changetime = $obj[minutely][data][$break][time];
 		$tilchange = round(($changetime-time())/60)." minutes";
-		if($tilchange<=0){ $tilchange = "0 minutes";}
-		else if($tilchange>=60){ $tilchange = "over an hour";}
+		if($tilchange>=60){ $tilchange = "over an hour";}
+		else if($tilchange <= -0){ $tilchange = 0; }
 	}
 	else{
 		$changetime = $obj[hourly][data][$break][time];
 		$tilchange = "about ".round((round(($changetime-time())/60)/60), 1)." hours";
 	}
+
 	$stoptime = date('h:i a', $changetime);
 	$stopdate = date('m/d/Y', $changetime);
 
@@ -91,7 +95,7 @@ error_reporting(E_ALL &~E_NOTICE &~E_WARNING &~E_DEPRECATED);
 		$yesno = "Holy balls it's a monsoon";
 	}*/
 
-	if($rain < .002){
+	if($rain < $limit || $tilchange == 0){
 		if($location){
 			$yesno = "It's not raining in <span>$location</span>.";
 		}

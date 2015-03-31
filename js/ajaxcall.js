@@ -31,6 +31,8 @@ $(document).ready(function(){
 				url = url+thelat;
 				url = url+"&longitude="+thelong;
 				url = url+"&address="+user_location;
+				document.activeElement.blur();
+				$("input").blur();
 				$('.user_input').fadeOut(350, function(){
 					$('main.valign').css("top", "50%");
 					$('.results').fadeIn(350, function(){

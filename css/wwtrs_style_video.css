@@ -25,8 +25,6 @@ h2,h3,h4,h5,h6,p,a,input{
 	position:relative;
 	top:50%;
 	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
@@ -90,6 +88,7 @@ form{
 input{
 	width:100%;
 	padding:7px 10px;
+	height:52px;
 	border:3px solid #fff;
 	color:#fff;
 	background-color:#615F63;
@@ -99,9 +98,6 @@ input{
 	background-color: rgba(255,255,255,0);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
 	-webkit-transition: all .35s ease;
-	-moz-transition: all .35s ease;
-	-ms-transition: all .35s ease;
-	-o-transition: all .35s ease;
 	transition: all .35s ease;
 }
 
@@ -112,6 +108,7 @@ input:focus{
 
 .button{
 	color:#000;
+	height:52px;
 	background-color: #fff;
 	font-size: 1.314em;
 	border-radius: 2px;
@@ -124,9 +121,6 @@ input:focus{
 	cursor: pointer;
 	z-index:99;
 	-webkit-transition: all .35s ease;
-		-moz-transition: all .35s ease;
-		-ms-transition: all .35s ease;
-		-o-transition: all .35s ease;
 		transition: all .35s ease;
 }
 
@@ -136,19 +130,19 @@ input:focus{
 	text-align: center;
 	margin:7px 0;
 	-webkit-transition: all .35s ease;
-		-moz-transition: all .35s ease;
-		-ms-transition: all .35s ease;
-		-o-transition: all .35s ease;
 		transition: all .35s ease;
 }
 
 .button:hover i{
 	color:#000;
-	transform:translateY(1px);
+	-webkit-transform:translateY(1px);
+	    -ms-transform:translateY(1px);
+	        transform:translateY(1px);
 }
 
 .results{
 	display: none;
+	font-size: 32px;
 	font-size:2rem;
 	text-align: center;
 }
@@ -157,10 +151,13 @@ input:focus{
 
 footer{
 	height:5%;
+	min-height: 25px;
+	max-height: 50px;
 	background-color: rgba(225,225,225,1);
-	color:#000;
-	position:absolute;
+	position:fixed;
 	bottom:0; left:0; right:0;
+	box-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+
 }
 
 footer img{
@@ -173,20 +170,16 @@ footer img{
 footer .again,
 footer img{
 	-webkit-transition: all .35s ease;
-		-moz-transition: all .35s ease;
-		-ms-transition: all .35s ease;
-		-o-transition: all .35s ease;
 		transition: all .35s ease;
 }
 
 footer .again:hover,
 footer img:hover{
 	-ms-transform: translateY(1px);
-	-o-transform: translateY(1px);
-	-moz-transform: translateY(1px);
 	-webkit-transform: translateY(1px);
 	transform: translateY(1px);
 	opacity: 0.66;
+	filter: alpha(opacity=66);
 }
 
 footer .again{
